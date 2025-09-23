@@ -6,12 +6,14 @@ const Hero = () => {
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-accent/80" />
-      </div>
+      <img 
+        src={heroImage}
+        alt="Data Science & Statistical Analysis Lab - Advanced research and analytics"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+        fetchPriority="high"
+        loading="eager"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-accent/80" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 lg:px-6 text-center">

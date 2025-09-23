@@ -43,13 +43,18 @@ const Examples = () => {
 
   const getCategoryColor = (category: string) => {
     const colors: { [key: string]: string } = {
-      "Academic Analytics": "bg-data-primary/10 text-data-primary",
-      "Healthcare": "bg-red-100 text-red-700",
-      "Environmental": "bg-green-100 text-green-700",
-      "Education": "bg-blue-100 text-blue-700",
-      "Policy Research": "bg-purple-100 text-purple-700"
+      "Academic Analytics": "bg-data-primary/10 text-data-primary border-data-primary/20",
+      "Healthcare": "bg-destructive/10 text-destructive border-destructive/20",
+      "Environmental": "bg-data-secondary/10 text-data-secondary border-data-secondary/20",
+      "Education": "bg-primary/10 text-primary border-primary/20",
+      "Policy Research": "bg-accent/10 text-accent border-accent/20"
     };
-    return colors[category] || "bg-gray-100 text-gray-700";
+    return colors[category] || "bg-muted text-muted-foreground border-border";
+  };
+
+  const handleExampleClick = (example: typeof examples[0]) => {
+    // For now, just log the example - could be extended to show modal, navigate, etc.
+    console.log("Viewing example:", example.title);
   };
 
   return (
@@ -67,7 +72,11 @@ const Examples = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {examples.map((example, index) => (
-            <Card key={index} className="shadow-card hover:shadow-data transition-all duration-300 border-border/50 group cursor-pointer">
+            <Card 
+              key={index} 
+              className="shadow-card hover:shadow-data transition-all duration-300 border-border/50 group cursor-pointer"
+              onClick={() => handleExampleClick(example)}
+            >
               <CardHeader>
                 <div className="flex items-start justify-between mb-2">
                   <Badge className={getCategoryColor(example.category)}>

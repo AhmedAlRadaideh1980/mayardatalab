@@ -1,8 +1,12 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ExternalLink } from "lucide-react";
+import { useState } from "react";
 
 const Examples = () => {
+  const [selectedExample, setSelectedExample] = useState<typeof examples[0] | null>(null);
+  
   const examples = [
     {
       title: "Research Dashboard",
@@ -53,8 +57,7 @@ const Examples = () => {
   };
 
   const handleExampleClick = (example: typeof examples[0]) => {
-    // For now, just log the example - could be extended to show modal, navigate, etc.
-    console.log("Viewing example:", example.title);
+    setSelectedExample(example);
   };
 
   return (
@@ -110,6 +113,38 @@ const Examples = () => {
           ))}
         </div>
       </div>
+
+      <Dialog open={!!selectedExample} onOpenChange={(open) => !open && setSelectedExample(null)}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl">{selectedExample?.title}</DialogTitle>
+            <DialogDescription className="text-base">
+              {selectedExample?.description}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 mt-4">
+            <div>
+              <Badge className={selectedExample ? getCategoryColor(selectedExample.category) : ""}>
+                {selectedExample?.category}
+              </Badge>
+            </div>
+            <div>
+              <h4 className="font-semibold text-sm text-foreground mb-2">Technologies & Methods</h4>
+              <div className="flex flex-wrap gap-2">
+                {selectedExample?.tags.map((tag, tagIndex) => (
+                  <Badge key={tagIndex} variant="secondary">
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+            <div className="p-4 bg-accent/10 rounded-lg border border-accent/20">
+              <h4 className="font-semibold text-sm text-accent mb-2">Project Impact</h4>
+              <p className="text-sm text-foreground">{selectedExample?.impact}</p>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

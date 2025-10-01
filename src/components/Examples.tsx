@@ -1,11 +1,10 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ExternalLink } from "lucide-react";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Examples = () => {
-  const [selectedExample, setSelectedExample] = useState<typeof examples[0] | null>(null);
+  const navigate = useNavigate();
   
   const examples = [
     {
@@ -13,35 +12,40 @@ const Examples = () => {
       description: "Interactive dashboard for a university research center to track publications, citations, and collaborations across departments.",
       category: "Academic Analytics",
       tags: ["Dashboard", "Publications", "Citations", "Collaboration"],
-      impact: "40% increase in cross-department research visibility"
+      impact: "40% increase in cross-department research visibility",
+      demoUrl: "/demos/research-dashboard"
     },
     {
       title: "Health Data Analysis",
       description: "Statistical modeling of patient data to identify predictors of treatment outcomes.",
       category: "Healthcare",
       tags: ["Predictive Modeling", "Clinical Data", "Outcomes Research"],
-      impact: "Identified 5 key predictors improving treatment success by 25%"
+      impact: "Identified 5 key predictors improving treatment success by 25%",
+      demoUrl: "/demos/health-analysis"
     },
     {
       title: "Environmental Studies",
       description: "Predictive analysis of water resource availability under climate change scenarios.",
       category: "Environmental",
       tags: ["Climate Modeling", "Resource Management", "Forecasting"],
-      impact: "Informed policy decisions for 3 major watersheds"
+      impact: "Informed policy decisions for 3 major watersheds",
+      demoUrl: "/demos/environmental"
     },
     {
       title: "Education Analytics",
       description: "Dashboard showing student retention, success rates, and course performance trends for accreditation purposes.",
       category: "Education",
       tags: ["Student Success", "Retention", "Accreditation"],
-      impact: "Achieved full accreditation with 95% data compliance"
+      impact: "Achieved full accreditation with 95% data compliance",
+      demoUrl: "/demos/education"
     },
     {
       title: "Survey Analysis",
       description: "Advanced analysis of national survey data, including weighting, sampling error estimation, and policy implications.",
       category: "Policy Research",
       tags: ["Survey Design", "Policy Analysis", "National Data"],
-      impact: "Findings cited in 12 policy recommendations"
+      impact: "Findings cited in 12 policy recommendations",
+      demoUrl: "/demos/survey"
     }
   ];
 
@@ -56,8 +60,8 @@ const Examples = () => {
     return colors[category] || "bg-muted text-muted-foreground border-border";
   };
 
-  const handleExampleClick = (example: typeof examples[0]) => {
-    setSelectedExample(example);
+  const handleExampleClick = (demoUrl: string) => {
+    navigate(demoUrl);
   };
 
   return (
@@ -78,7 +82,7 @@ const Examples = () => {
             <Card 
               key={index} 
               className="shadow-card hover:shadow-data transition-all duration-300 border-border/50 group cursor-pointer"
-              onClick={() => handleExampleClick(example)}
+              onClick={() => handleExampleClick(example.demoUrl)}
             >
               <CardHeader>
                 <div className="flex items-start justify-between mb-2">
@@ -113,38 +117,6 @@ const Examples = () => {
           ))}
         </div>
       </div>
-
-      <Dialog open={!!selectedExample} onOpenChange={(open) => !open && setSelectedExample(null)}>
-        <DialogContent className="max-w-2xl">
-          <DialogHeader>
-            <DialogTitle className="text-2xl">{selectedExample?.title}</DialogTitle>
-            <DialogDescription className="text-base">
-              {selectedExample?.description}
-            </DialogDescription>
-          </DialogHeader>
-          <div className="space-y-4 mt-4">
-            <div>
-              <Badge className={selectedExample ? getCategoryColor(selectedExample.category) : ""}>
-                {selectedExample?.category}
-              </Badge>
-            </div>
-            <div>
-              <h4 className="font-semibold text-sm text-foreground mb-2">Technologies & Methods</h4>
-              <div className="flex flex-wrap gap-2">
-                {selectedExample?.tags.map((tag, tagIndex) => (
-                  <Badge key={tagIndex} variant="secondary">
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-            <div className="p-4 bg-accent/10 rounded-lg border border-accent/20">
-              <h4 className="font-semibold text-sm text-accent mb-2">Project Impact</h4>
-              <p className="text-sm text-foreground">{selectedExample?.impact}</p>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
     </section>
   );
 };

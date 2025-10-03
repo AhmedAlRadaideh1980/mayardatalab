@@ -1,16 +1,20 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Linkedin } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Team = () => {
   const teamMembers = [
     {
       name: "Dr. Ahmed Al-Radaideh",
       role: "Team Manager",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop"
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
+      linkedin: "https://www.linkedin.com/in/ahmedalradaideh/"
     },
     {
       name: "Dr. Bilal Ahmed",
       role: "Team Member",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+      linkedin: "https://www.linkedin.com/in/bilal-ahmed-42b18453/"
     }
   ];
 
@@ -37,7 +41,22 @@ const Team = () => {
                     />
                   </div>
                   <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
-                  <p className="text-primary font-medium">{member.role}</p>
+                  <p className="text-primary font-medium mb-4">{member.role}</p>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    asChild
+                  >
+                    <a 
+                      href={member.linkedin} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2"
+                    >
+                      <Linkedin size={16} />
+                      LinkedIn Profile
+                    </a>
+                  </Button>
                 </div>
               </CardContent>
             </Card>

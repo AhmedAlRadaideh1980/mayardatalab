@@ -2,9 +2,97 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Users, Award, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Users, Award, Clock, Upload } from "lucide-react";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    institution: "",
+    message: ""
+  });
+  const [file, setFile] = useState<File | null>(null);
+  const { toast } = useToast();
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    if (selectedFile) {
+      const validTypes = ['application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
+      if (validTypes.includes(selectedFile.type) || selectedFile.name.endsWith('.xlsx') || selectedFile.name.endsWith('.xls')) {
+        setFile(selectedFile);
+      } else {
+        toast({
+          title: "Invalid file type",
+          description: "Please upload an Excel file (.xlsx or .xls)",
+          variant: "destructive"
+        });
+      }
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // Convert file to base64 if exists
+      let fileData = null;
+      if (file) {
+        const reader = new FileReader();
+        fileData = await new Promise((resolve, reject) => {
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      }
+
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          ...formData,
+          fileName: file?.name,
+          fileData: fileData
+        }
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Success!",
+        description: "Your message has been sent successfully."
+      });
+
+      // Reset form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        institution: "",
+        message: ""
+      });
+      setFile(null);
+      const fileInput = document.getElementById('file-upload') as HTMLInputElement;
+      if (fileInput) fileInput.value = '';
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   const stats = [
     { icon: Users, number: "500+", label: "Projects Completed" },
     { icon: Award, number: "50+", label: "Publications Supported" },
@@ -50,20 +138,83 @@ const Contact = () => {
                 Tell us about your project and we'll get back to you within 24 hours
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
-                <Input placeholder="First Name" />
-                <Input placeholder="Last Name" />
-              </div>
-              <Input placeholder="Email Address" type="email" />
-              <Input placeholder="Institution/Organization" />
-              <Textarea 
-                placeholder="Tell us about your project, research goals, or data analysis needs..." 
-                className="min-h-[120px]"
-              />
-              <Button className="w-full" size="lg">
-                Send Message
-              </Button>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <Input 
+                    name="firstName"
+                    placeholder="First Name" 
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    required
+                  />
+                  <Input 
+                    name="lastName"
+                    placeholder="Last Name" 
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <Input 
+                  name="email"
+                  placeholder="Email Address" 
+                  type="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
+                <Input 
+                  name="institution"
+                  placeholder="Institution/Organization"
+                  value={formData.institution}
+                  onChange={handleInputChange}
+                  required
+                />
+                <Textarea 
+                  name="message"
+                  placeholder="Tell us about your project, research goals, or data analysis needs..." 
+                  className="min-h-[120px]"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
+                />
+                
+                {/* File Upload */}
+                <div className="border-2 border-dashed border-border rounded-lg p-4 text-center">
+                  <label htmlFor="file-upload" className="cursor-pointer">
+                    <div className="flex flex-col items-center space-y-2">
+                      <Upload className="h-8 w-8 text-muted-foreground" />
+                      <div className="text-sm text-muted-foreground">
+                        {file ? (
+                          <span className="text-foreground font-medium">{file.name}</span>
+                        ) : (
+                          <span>Upload your data file (Excel format)</span>
+                        )}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        Supported formats: .xlsx, .xls
+                      </div>
+                    </div>
+                    <input
+                      id="file-upload"
+                      type="file"
+                      accept=".xlsx,.xls,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                      onChange={handleFileChange}
+                      className="hidden"
+                    />
+                  </label>
+                </div>
+
+                <Button 
+                  type="submit" 
+                  className="w-full" 
+                  size="lg"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </Button>
+              </form>
             </CardContent>
           </Card>
 

@@ -22,22 +22,22 @@ const Footer = () => {
             <h3 className="font-semibold mb-4">Services</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <a href="#services" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Statistical Consulting
                 </a>
               </li>
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <a href="#services" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Data Visualization
                 </a>
               </li>
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <a href="#services" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Research Support
                 </a>
               </li>
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <a href="#services" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Institutional Analytics
                 </a>
               </li>
@@ -49,23 +49,23 @@ const Footer = () => {
             <h3 className="font-semibold mb-4">Resources</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <a href="#examples" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Case Studies
                 </a>
               </li>
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Research Papers
+                <a href="#examples" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                  Examples of Our Work
                 </a>
               </li>
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Methodology Guide
+                <a href="#services" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                  Our Services
                 </a>
               </li>
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  FAQ
+                <a href="#contact" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                  Contact Us
                 </a>
               </li>
             </ul>

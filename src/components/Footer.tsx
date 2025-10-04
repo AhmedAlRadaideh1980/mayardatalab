@@ -1,4 +1,4 @@
-import { BarChart3, Mail, Phone, MapPin, Linkedin, Twitter } from "lucide-react";
+import { BarChart3 } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -9,100 +9,66 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <BarChart3 className="h-6 w-6" />
-              <span className="text-xl font-bold">DataLab</span>
+              <span className="text-xl font-bold">Mayar Data Lab</span>
             </div>
             <p className="text-sm text-primary-foreground/80 leading-relaxed">
-              Transforming data into meaningful insights through advanced statistical analysis 
-              and expert consulting for academic and institutional excellence.
+              Converting raw numbers into clear stories. From statistical analysis to machine learning pipelines.
             </p>
           </div>
 
-          {/* Services */}
+          {/* Quick Links */}
           <div>
-            <h3 className="font-semibold mb-4">Services</h3>
+            <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#services" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Statistical Consulting
+                <a href="#about" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                  About
                 </a>
               </li>
               <li>
                 <a href="#services" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Data Visualization
+                  Services
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Research Support
+                <a href="#projects" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                  Projects
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Institutional Analytics
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h3 className="font-semibold mb-4">Resources</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a href="#examples" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Case Studies
-                </a>
-              </li>
-              <li>
-                <a href="#examples" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Examples of Our Work
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Our Services
+                <a href="#blog" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                  Blog
                 </a>
               </li>
               <li>
                 <a href="#contact" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Contact Us
+                  Contact
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Newsletter */}
           <div>
-            <h3 className="font-semibold mb-4">Contact</h3>
-            <div className="space-y-2 text-sm">
-              <div className="flex items-center space-x-2">
-                <Mail className="h-4 w-4" />
-                <span className="text-primary-foreground/80">radaidehstat@yahoo.com</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Phone className="h-4 w-4" />
-                <span className="text-primary-foreground/80">+971529945649</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <MapPin className="h-4 w-4" />
-                <span className="text-primary-foreground/80">Research Park, FU</span>
-              </div>
-            </div>
-            
-            <div className="flex space-x-3 mt-4">
-              <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                <Twitter className="h-5 w-5" />
-              </a>
+            <h3 className="font-semibold mb-4">Newsletter</h3>
+            <p className="text-sm text-primary-foreground/80 mb-4">Get one data-tip a month</p>
+            <div className="flex gap-2">
+              <input 
+                type="email" 
+                placeholder="Your email" 
+                className="flex-1 px-3 py-2 text-sm rounded bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary-foreground/30"
+              />
+              <button className="px-4 py-2 text-sm bg-primary-foreground text-primary rounded hover:bg-primary-foreground/90 transition-colors">
+                Subscribe
+              </button>
             </div>
           </div>
+
         </div>
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
           <p className="text-sm text-primary-foreground/60">
-            © 2024 Data Science & Statistical Analysis Lab. All rights reserved.
+            Copyright © 2025 Mayar Data Lab. Built with ❤️ and open-source code.
           </p>
         </div>
       </div>

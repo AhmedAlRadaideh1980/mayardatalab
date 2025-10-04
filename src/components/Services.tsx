@@ -5,46 +5,34 @@ const Services = () => {
   const services = [
     {
       icon: BarChart3,
-      title: "Statistical Consulting & Analysis",
-      description: "Comprehensive statistical solutions for research excellence",
-      price: "$150-300/hour",
+      title: "Statistical Analysis",
+      description: "Rigorous statistical methods for research and decision-making",
       features: [
-        "Hypothesis testing, regression models, ANOVA, multivariate analysis",
-        "Survey design, sampling techniques, and experimental design",
-        "Predictive modeling and machine learning applications"
+        "Hypothesis testing, experimental design, regression, Bayesian inference, survey weighting"
+      ]
+    },
+    {
+      icon: Building,
+      title: "Machine Learning & AI",
+      description: "AI-powered solutions for predictive insights",
+      features: [
+        "Predictive modelling, NLP, computer vision, clustering, recommender systems, MLOps"
       ]
     },
     {
       icon: Monitor,
       title: "Data Visualization & Dashboards",
-      description: "Transform complex data into compelling visual stories",
-      price: "$2,500-7,500/project",
+      description: "Transform data into compelling visual stories",
       features: [
-        "Interactive dashboards (Power BI, Tableau, Python Dash, R Shiny)",
-        "Custom KPI monitoring for institutions",
-        "Visual storytelling for publications, reports, and presentations"
+        "Interactive Power BI / Tableau dashboards, publication-ready plots, data-storytelling workshops"
       ]
     },
     {
       icon: BookOpen,
-      title: "Research Support for Academics",
-      description: "Expert guidance for academic research and publications",
-      price: "$100-200/hour",
+      title: "Research Support",
+      description: "Comprehensive support for academic and research projects",
       features: [
-        "Data cleaning, preprocessing, and transformation",
-        "Support with Scopus/WoS-indexed publication requirements",
-        "Guidance on statistical methodology for theses and dissertations"
-      ]
-    },
-    {
-      icon: Building,
-      title: "Institutional Analytics",
-      description: "Strategic insights for institutional decision-making",
-      price: "$5,000-15,000/project",
-      features: [
-        "Student performance tracking and learning analytics",
-        "Institutional research and accreditation support",
-        "Strategic planning dashboards for decision makers"
+        "Grant-writing statistics, journal-ready methodology, reproducible code in R & Python, PhD coaching"
       ]
     }
   ];
@@ -66,30 +54,18 @@ const Services = () => {
           {services.map((service, index) => (
             <Card key={index} className="bg-gradient-card border-border/50 shadow-card hover:shadow-elegant transition-all duration-300 group">
               <CardHeader>
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center space-x-4">
-                    <div className="bg-gradient-accent p-3 rounded-lg group-hover:scale-110 transition-transform duration-300">
-                      <service.icon className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <CardTitle className="text-xl text-foreground">{service.title}</CardTitle>
-                      <CardDescription className="text-muted-foreground">{service.description}</CardDescription>
-                    </div>
+                <div className="flex items-start space-x-4 mb-4">
+                  <div className="bg-gradient-accent p-3 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                    <service.icon className="h-6 w-6 text-white" aria-label={`Icon for ${service.title}`} />
                   </div>
-                  <div className="bg-accent/10 px-3 py-1 rounded-full">
-                    <span className="text-sm font-semibold text-accent">{service.price}</span>
+                  <div>
+                    <CardTitle className="text-xl text-foreground">{service.title}</CardTitle>
+                    <CardDescription className="text-muted-foreground">{service.description}</CardDescription>
                   </div>
                 </div>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-3">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start space-x-2 text-sm text-foreground">
-                      <div className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                <p className="text-sm text-foreground">{service.features[0]}</p>
               </CardContent>
             </Card>
           ))}

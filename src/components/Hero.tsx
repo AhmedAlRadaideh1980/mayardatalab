@@ -4,11 +4,11 @@ import heroImage from "@/assets/hero-data-science.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <img 
         src={heroImage}
-        alt="Data Science & Statistical Analysis Lab - Advanced research and analytics"
+        alt="Animated network graph transitioning into bar charts"
         className="absolute inset-0 w-full h-full object-cover object-center"
         fetchPriority="high"
         loading="eager"
@@ -25,13 +25,11 @@ const Hero = () => {
           </div>
           
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-            Data Science & 
-            <span className="text-data-accent"> Statistical Analysis</span> Lab
+            Turning Data Into Meaningful Insights
           </h1>
           
           <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed max-w-3xl mx-auto">
-            Transform data into meaningful insights with advanced statistical analysis, 
-            predictive modeling, and interactive dashboards tailored for researchers and institutions.
+            We specialize in statistical analysis, data science, and predictive modelling that help businesses, researchers and policy-makers make smarter, faster decisions.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -40,6 +38,7 @@ const Hero = () => {
               variant="secondary" 
               className="group"
               onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+              aria-label="Explore our statistical analysis and data science services"
             >
               Explore Our Services
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -48,9 +47,10 @@ const Hero = () => {
               size="lg" 
               variant="outline" 
               className="bg-white/10 border-white/30 text-white hover:bg-white/20"
-              onClick={() => document.getElementById('examples')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              aria-label="Book your free consultation"
             >
-              View Examples
+              Book a Free 30-min Consultation
             </Button>
           </div>
         </div>

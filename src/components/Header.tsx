@@ -11,22 +11,34 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-2">
             <BarChart3 className="h-8 w-8 text-primary" />
-            <span className="text-xl font-bold text-foreground">DataLab</span>
+            <span className="text-xl font-bold text-foreground">Mayar Data Lab</span>
           </div>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
+            <a href="#home" className="text-foreground hover:text-primary transition-colors">
+              Home
+            </a>
+            <a href="#about" className="text-foreground hover:text-primary transition-colors">
+              About
+            </a>
             <a href="#services" className="text-foreground hover:text-primary transition-colors">
               Services
             </a>
-            <a href="#examples" className="text-foreground hover:text-primary transition-colors">
-              Examples
+            <a href="#projects" className="text-foreground hover:text-primary transition-colors">
+              Projects
+            </a>
+            <a href="#team" className="text-foreground hover:text-primary transition-colors">
+              Team
+            </a>
+            <a href="#blog" className="text-foreground hover:text-primary transition-colors">
+              Blog
             </a>
             <a href="#contact" className="text-foreground hover:text-primary transition-colors">
               Contact
             </a>
-            <Button variant="default" size="sm">
-              Get Started
+            <Button variant="default" size="sm" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+              Get in Touch
             </Button>
           </nav>
 
@@ -43,17 +55,29 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border">
             <nav className="flex flex-col space-y-4">
+              <a href="#home" className="text-foreground hover:text-primary transition-colors">
+                Home
+              </a>
+              <a href="#about" className="text-foreground hover:text-primary transition-colors">
+                About
+              </a>
               <a href="#services" className="text-foreground hover:text-primary transition-colors">
                 Services
               </a>
-              <a href="#examples" className="text-foreground hover:text-primary transition-colors">
-                Examples
+              <a href="#projects" className="text-foreground hover:text-primary transition-colors">
+                Projects
+              </a>
+              <a href="#team" className="text-foreground hover:text-primary transition-colors">
+                Team
+              </a>
+              <a href="#blog" className="text-foreground hover:text-primary transition-colors">
+                Blog
               </a>
               <a href="#contact" className="text-foreground hover:text-primary transition-colors">
                 Contact
               </a>
-              <Button variant="default" size="sm" className="w-fit">
-                Get Started
+              <Button variant="default" size="sm" className="w-fit" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                Get in Touch
               </Button>
             </nav>
           </div>

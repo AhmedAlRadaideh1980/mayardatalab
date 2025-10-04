@@ -1,95 +1,67 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 
 const Examples = () => {
-  const navigate = useNavigate();
-  
   const examples = [
     {
-      title: "Research Dashboard",
-      description: "Interactive dashboard for a university research center to track publications, citations, and collaborations across departments.",
-      category: "Academic Analytics",
-      tags: ["Dashboard", "Publications", "Citations", "Collaboration"],
-      impact: "40% increase in cross-department research visibility",
-      demoUrl: "/demos/research-dashboard"
+      title: "Forecasting Retail Demand",
+      description: "Built an XGBoost model that cut over-stock by 28% and increased on-shelf availability for a 50-store grocery chain.",
+      category: "Retail Analytics",
+      tags: ["Machine Learning", "Forecasting", "Retail"],
+      impact: "28% reduction in over-stock",
+      link: "Read full case study"
     },
     {
-      title: "Health Data Analysis",
-      description: "Statistical modeling of patient data to identify predictors of treatment outcomes.",
-      category: "Healthcare",
-      tags: ["Predictive Modeling", "Clinical Data", "Outcomes Research"],
-      impact: "Identified 5 key predictors improving treatment success by 25%",
-      demoUrl: "/demos/health-analysis"
-    },
-    {
-      title: "Environmental Studies",
-      description: "Predictive analysis of water resource availability under climate change scenarios.",
+      title: "Environmental Sustainability Analytics",
+      description: "Combined satellite imagery + sensor data to identify irrigation inefficiencies, saving 1.2M gallons of water per season.",
       category: "Environmental",
-      tags: ["Climate Modeling", "Resource Management", "Forecasting"],
-      impact: "Informed policy decisions for 3 major watersheds",
-      demoUrl: "/demos/environmental"
+      tags: ["Sustainability", "IoT", "Resource Management"],
+      impact: "1.2M gallons saved per season",
+      link: "Read full case study"
     },
     {
-      title: "Education Analytics",
-      description: "Dashboard showing student retention, success rates, and course performance trends for accreditation purposes.",
-      category: "Education",
-      tags: ["Student Success", "Retention", "Accreditation"],
-      impact: "Achieved full accreditation with 95% data compliance",
-      demoUrl: "/demos/education"
-    },
-    {
-      title: "Survey Analysis",
-      description: "Advanced analysis of national survey data, including weighting, sampling error estimation, and policy implications.",
-      category: "Policy Research",
-      tags: ["Survey Design", "Policy Analysis", "National Data"],
-      impact: "Findings cited in 12 policy recommendations",
-      demoUrl: "/demos/survey"
+      title: "AI Text Classification for Academia",
+      description: "Fine-tuned BERT to auto-tag 50k research abstracts, reducing manual coding time by 92%.",
+      category: "Academic AI",
+      tags: ["NLP", "Machine Learning", "Automation"],
+      impact: "92% time reduction",
+      link: "Read full case study"
     }
   ];
 
   const getCategoryColor = (category: string) => {
     const colors: { [key: string]: string } = {
-      "Academic Analytics": "bg-data-primary/10 text-data-primary border-data-primary/20",
-      "Healthcare": "bg-destructive/10 text-destructive border-destructive/20",
+      "Retail Analytics": "bg-primary/10 text-primary border-primary/20",
       "Environmental": "bg-data-secondary/10 text-data-secondary border-data-secondary/20",
-      "Education": "bg-primary/10 text-primary border-primary/20",
-      "Policy Research": "bg-accent/10 text-accent border-accent/20"
+      "Academic AI": "bg-accent/10 text-accent border-accent/20"
     };
     return colors[category] || "bg-muted text-muted-foreground border-border";
   };
 
-  const handleExampleClick = (demoUrl: string) => {
-    navigate(demoUrl);
-  };
-
   return (
-    <section id="examples" className="py-20 bg-background">
+    <section id="projects" className="py-20 bg-background">
       <div className="container mx-auto px-4 lg:px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Examples of Our Work
+            Our Work in Action
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Real-world applications demonstrating our expertise in statistical analysis, 
-            data visualization, and research support across various domains
+            Real-world case studies demonstrating our expertise in statistical analysis, 
+            machine learning, and data visualization
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6">
           {examples.map((example, index) => (
             <Card 
               key={index} 
-              className="shadow-card hover:shadow-data transition-all duration-300 border-border/50 group cursor-pointer"
-              onClick={() => handleExampleClick(example.demoUrl)}
+              className="shadow-card hover:shadow-data transition-all duration-300 border-border/50 group"
             >
               <CardHeader>
                 <div className="flex items-start justify-between mb-2">
                   <Badge className={getCategoryColor(example.category)}>
                     {example.category}
                   </Badge>
-                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                 </div>
                 <CardTitle className="text-lg group-hover:text-primary transition-colors">
                   {example.title}
@@ -111,6 +83,12 @@ const Examples = () => {
                     <p className="text-sm font-medium text-accent">Impact:</p>
                     <p className="text-xs text-muted-foreground mt-1">{example.impact}</p>
                   </div>
+                  <a 
+                    href="#contact" 
+                    className="text-sm text-primary hover:underline flex items-center gap-1"
+                  >
+                    {example.link} →
+                  </a>
                 </div>
               </CardContent>
             </Card>

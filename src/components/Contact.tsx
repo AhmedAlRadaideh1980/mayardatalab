@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Users, Award, Clock, Upload } from "lucide-react";
+import { Mail, MapPin, Users, Award, Clock, Upload, Linkedin } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
@@ -104,11 +104,10 @@ const Contact = () => {
       <div className="container mx-auto px-4 lg:px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Ready to Transform Your Data?
+            Let's Work Together
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Let's discuss how our statistical expertise can support your research goals 
-            and institutional objectives
+            Get in touch to discuss your data science and analytics needs
           </p>
         </div>
 
@@ -133,32 +132,23 @@ const Contact = () => {
           {/* Contact Form */}
           <Card className="shadow-elegant border-border/50">
             <CardHeader>
-              <CardTitle className="text-2xl">Get Started Today</CardTitle>
+              <CardTitle className="text-2xl">Send Message</CardTitle>
               <CardDescription>
-                Tell us about your project and we'll get back to you within 24 hours
+                Thanks! We'll reply within 24 hours.
               </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <Input 
-                    name="firstName"
-                    placeholder="First Name" 
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    required
-                  />
-                  <Input 
-                    name="lastName"
-                    placeholder="Last Name" 
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
+                <Input 
+                  name="firstName"
+                  placeholder="Name" 
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                  required
+                />
                 <Input 
                   name="email"
-                  placeholder="Email Address" 
+                  placeholder="Email" 
                   type="email"
                   value={formData.email}
                   onChange={handleInputChange}
@@ -166,14 +156,13 @@ const Contact = () => {
                 />
                 <Input 
                   name="institution"
-                  placeholder="Institution/Organization"
+                  placeholder="Organization (optional)"
                   value={formData.institution}
                   onChange={handleInputChange}
-                  required
                 />
                 <Textarea 
                   name="message"
-                  placeholder="Tell us about your project, research goals, or data analysis needs..." 
+                  placeholder="How can we help?" 
                   className="min-h-[120px]"
                   value={formData.message}
                   onChange={handleInputChange}
@@ -225,15 +214,15 @@ const Contact = () => {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-accent" />
-                  <span className="text-foreground">radaidehstat@yahoo.com</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Phone className="h-5 w-5 text-accent" />
-                  <span className="text-foreground">+971529945649</span>
+                  <span className="text-foreground">contact@mayardatalab.com</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="h-5 w-5 text-accent" />
                   <span className="text-foreground">Research Park, FU</span>
+                </div>
+                <div className="flex items-center space-x-3 mt-4">
+                  <Linkedin className="h-5 w-5 text-accent" />
+                  <span className="text-foreground">LinkedIn</span>
                 </div>
               </div>
             </div>

@@ -7,15 +7,24 @@ const Team = () => {
   const teamMembers = [
     {
       name: "Dr. Ahmed Al-Radaideh",
-      role: "Team Manager",
+      role: "Founder & Principal Data Scientist",
+      description: "PhD Applied Statistics, 15 years leading analytics teams in healthcare & retail",
       image: drAhmedPhoto,
       linkedin: "https://www.linkedin.com/in/ahmedalradaideh/"
     },
     {
       name: "Dr. Bilal Ahmed",
-      role: "Team Member",
+      role: "Data Scientist",
+      description: "International Islamic University, Doctor of Philosophy (Ph.D.), Computational and Applied Mathematics",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
       linkedin: "https://www.linkedin.com/in/bilal-ahmed-42b18453/"
+    },
+    {
+      name: "Dr. Safwat AlTal",
+      role: "Research Consultant",
+      description: "PhD Electronic Business, University of Salento, Italy",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
+      linkedin: "https://www.linkedin.com/in/safwat-al-tal-9a49b3b9/"
     }
   ];
 
@@ -23,13 +32,13 @@ const Team = () => {
     <section id="team" className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Team</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet the People Behind the Models</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Meet our experienced professionals dedicated to providing exceptional statistical consulting services
+            Our team of experienced data scientists and statisticians
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {teamMembers.map((member) => (
             <Card key={member.name} className="overflow-hidden hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
@@ -42,7 +51,8 @@ const Team = () => {
                     />
                   </div>
                   <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
-                  <p className="text-primary font-medium mb-4">{member.role}</p>
+                  <p className="text-primary font-medium mb-2">{member.role}</p>
+                  <p className="text-sm text-muted-foreground mb-4">{member.description}</p>
                   <Button
                     variant="outline"
                     size="sm"

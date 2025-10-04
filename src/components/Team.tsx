@@ -1,13 +1,14 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import drAhmedPhoto from "@/assets/dr-ahmed.jpg";
 
 const Team = () => {
   const teamMembers = [
     {
       name: "Dr. Ahmed Al-Radaideh",
       role: "Team Manager",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
+      image: drAhmedPhoto,
       linkedin: "https://www.linkedin.com/in/ahmedalradaideh/"
     },
     {

@@ -1,0 +1,7 @@
+{
+  "name": "send-contact-email",
+  "version": "1.0.0",
+  "dependencies": {
+    "resend": "2.0.0"
+  }
+}

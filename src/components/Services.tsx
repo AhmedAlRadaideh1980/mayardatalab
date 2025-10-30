@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BarChart3, Monitor, BookOpen, Building } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { BarChart3, Monitor, BookOpen, Building, ArrowRight } from "lucide-react";
 
 const Services = () => {
   const services = [
@@ -52,20 +53,28 @@ const Services = () => {
 
         <div className="grid md:grid-cols-2 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="bg-gradient-card border-border/50 shadow-card hover:shadow-elegant transition-all duration-300 group">
+            <Card key={index} className="bg-card border-border hover:border-accent/50 shadow-card hover:shadow-elegant transition-all duration-300 group">
               <CardHeader>
-                <div className="flex items-start space-x-4 mb-4">
+                <div className="flex items-start space-x-4">
                   <div className="bg-gradient-accent p-3 rounded-lg group-hover:scale-110 transition-transform duration-300">
                     <service.icon className="h-6 w-6 text-white" aria-label={`Icon for ${service.title}`} />
                   </div>
-                  <div>
-                    <CardTitle className="text-xl text-foreground">{service.title}</CardTitle>
+                  <div className="flex-1">
+                    <CardTitle className="text-xl text-foreground mb-2">{service.title}</CardTitle>
                     <CardDescription className="text-muted-foreground">{service.description}</CardDescription>
                   </div>
                 </div>
               </CardHeader>
-              <CardContent>
-                <p className="text-sm text-foreground">{service.features[0]}</p>
+              <CardContent className="space-y-4">
+                <p className="text-sm text-foreground/80">{service.features[0]}</p>
+                <Button 
+                  variant="outline" 
+                  className="w-full group/btn hover:bg-accent hover:text-accent-foreground"
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Learn More
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                </Button>
               </CardContent>
             </Card>
           ))}

@@ -83,12 +83,14 @@ const Examples = () => {
                     <p className="text-sm font-medium text-accent">Impact:</p>
                     <p className="text-xs text-muted-foreground mt-1">{example.impact}</p>
                   </div>
-                  <a 
-                    href="#contact" 
-                    className="text-sm text-primary hover:underline flex items-center gap-1"
+                  <button 
+                    onClick={() => {
+                      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="text-sm text-primary hover:underline flex items-center gap-1 hover:gap-2 transition-all"
                   >
-                    {example.link} →
-                  </a>
+                    Contact us to learn more →
+                  </button>
                 </div>
               </CardContent>
             </Card>
